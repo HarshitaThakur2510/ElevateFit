@@ -1,0 +1,99 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - ElevateFit</title>
+
+  <link rel="stylesheet" href="login.css">
+
+  
+</head>
+<body>
+  <main class="login-page">
+    <section class="login-card" aria-labelledby="login-title">
+      <h1 id="login-title">Sign in to ElevateFit</h1>
+
+      <div class="tab-controls" role="tablist" aria-label="Login type">
+        <button id="userTab" class="tab active" data-role="user" aria-selected="true">User</button>
+        <button id="adminTab" class="tab" data-role="admin" aria-selected="false">Admin</button>
+      </div>
+
+      <!-- Single form used for both user and admin; admin key shown only when admin selected -->
+      <form id="loginForm" class="login-form" role="form" aria-label="Login form">
+        <input type="hidden" name="role" id="roleInput" value="user">
+
+        <label>
+          Email
+          <input id="email" type="email" name="email" required autocomplete="username">
+        </label>
+
+        <label>
+          Password
+          <input id="password" type="password" name="password" required autocomplete="current-password">
+        </label>
+
+        <label id="adminKeyWrapper" class="hidden">
+          Admin Key
+          <input id="adminkey" type="text" name="adminkey" autocomplete="off">
+        </label>
+
+        <div class="form-actions">
+          <button id="submitBtn" type="submit" class="cta-button">Log in as User</button>
+        </div>
+      </form>
+
+      <p class="aux-links">
+        Don't have an account?
+        <a href="signup.html">Sign up</a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const userTab = document.getElementById('userTab');
+    const adminTab = document.getElementById('adminTab');
+    const loginForm = document.getElementById('loginForm');
+    const roleInput = document.getElementById('roleInput');
+    const adminKeyWrapper = document.getElementById('adminKeyWrapper');
+    const submitBtn = document.getElementById('submitBtn');
+
+    function setRole(role){
+      if(role === 'admin'){
+        adminTab.classList.add('active'); userTab.classList.remove('active');
+        adminTab.setAttribute('aria-selected','true'); userTab.setAttribute('aria-selected','false');
+        adminKeyWrapper.classList.remove('hidden');
+        roleInput.value = 'admin';
+        submitBtn.textContent = 'Log in as Admin';
+      } else {
+        userTab.classList.add('active'); adminTab.classList.remove('active');
+        userTab.setAttribute('aria-selected','true'); adminTab.setAttribute('aria-selected','false');
+        adminKeyWrapper.classList.add('hidden');
+        roleInput.value = 'user';
+        submitBtn.textContent = 'Log in as User';
+      }
+    }
+
+    userTab.addEventListener('click', ()=> setRole('user'));
+    adminTab.addEventListener('click', ()=> setRole('admin'));
+
+    loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(loginForm));
+
+    if (data.role === 'admin') {
+    // Optional check for admin key before redirect
+      if (data.adminkey.trim() === '') {
+        alert('Enter valid Admin Key');
+        return;
+      }
+      window.location.href = 'admin.html';
+    } else {
+      window.location.href = 'customer.html';
+    }
+  });
+  </script>
+</body>
+</html>

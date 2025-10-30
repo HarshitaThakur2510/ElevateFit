@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallet - ElevateFit Admin</title>
+<style>
+:root {
+  --page-bg:#111827;
+  --card-bg:#343a40;
+  --button-bg:#ff6b6b;
+  --button-hover:#e74c3c;
+  --text:#ffffff;
+  --muted:#d1d5db;
+}
+*{box-sizing:border-box;font-family:'Helvetica Neue',Arial,sans-serif;margin:0;padding:0}
+body{background:var(--page-bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.card{background:var(--card-bg);padding:2rem;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);max-width:400px;width:100%;text-align:center}
+h1{margin-bottom:1rem}
+.balance{font-size:2rem;font-weight:700;color:var(--button-bg);margin-bottom:1rem}
+button{background:var(--button-bg);color:#fff;border:none;padding:0.7rem 1.2rem;border-radius:8px;font-weight:700;margin:0.5rem;cursor:pointer;transition:background 0.3s}
+button:hover{background:var(--button-hover)}
+input{padding:0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:#fff;color:#000;width:100%;margin-bottom:0.5rem}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Gym Wallet</h1>
+  <div class="balance" id="balance">₹0</div>
+  <input type="number" id="amount" placeholder="Enter Amount">
+  <button onclick="addFunds()">Add Funds</button>
+  <button onclick="withdrawFunds()">Withdraw</button>
+</div>
+
+<script>
+let balance=0;
+function updateBalance(){document.getElementById('balance').innerText=`₹${balance}`}
+function addFunds(){
+  const amt=parseFloat(document.getElementById('amount').value)||0;
+  if(amt>0){balance+=amt;updateBalance();}
+  document.getElementById('amount').value='';
+}
+function withdrawFunds(){
+  const amt=parseFloat(document.getElementById('amount').value)||0;
+  if(amt>0&&amt<=balance){balance-=amt;updateBalance();}
+  document.getElementById('amount').value='';
+}
+</script>
+</body>
+</html>

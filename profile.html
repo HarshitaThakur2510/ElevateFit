@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - ElevateFit</title>
+<style>
+:root{
+  --page-bg:#111827;
+  --card-bg:#343a40;
+  --button-bg:#ff6b6b;
+  --button-hover:#e74c3c;
+  --text:#fff;
+  --muted:#d1d5db;
+}
+
+body{
+  margin:0; font-family:'Helvetica Neue',Arial,sans-serif;
+  background:var(--page-bg);
+  color:var(--text);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  align-items:center;
+  padding:2rem;
+}
+
+header{
+  width:100%;
+  max-width:800px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:2rem;
+}
+
+header h1{font-size:1.5rem;}
+header a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+}
+header a:hover{color:var(--button-bg);}
+
+main{
+  width:100%;
+  max-width:800px;
+  display:grid;
+  gap:1.5rem;
+}
+
+.card{
+  background:var(--card-bg);
+  padding:2rem;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.6);
+}
+
+.card h2{margin-bottom:1rem;}
+.card p{color:var(--muted); margin-bottom:0.5rem;}
+
+form{
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+}
+
+input, select{
+  padding:0.65rem;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.2);
+  outline:none;
+  background:#fff;
+  color:#111827;
+}
+
+button{
+  background:var(--button-bg);
+  color:#fff;
+  border:none;
+  padding:0.65rem 1rem;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+  transition:background 0.3s, transform 0.2s;
+}
+button:hover{background:var(--button-hover); transform:scale(1.05);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>User Profile</h1>
+  <a href="customer.html">Back</a>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Personal Information</h2>
+    <form id="profileForm">
+      <label>Full Name
+        <input type="text" name="name" value="John Doe" required>
+      </label>
+      <label>Email
+        <input type="email" name="email" value="john@example.com" required>
+      </label>
+      <label>Age
+        <input type="number" name="age" value="28" min="10" max="100">
+      </label>
+      <label>Height (cm)
+        <input type="number" name="height" value="175">
+      </label>
+      <label>Weight (kg)
+        <input type="number" name="weight" value="70">
+      </label>
+      <label>Gender
+        <select name="gender">
+          <option value="male" selected>Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <button type="submit">Save Profile</button>
+    </form>
+  </div>
+</main>
+
+<script>
+document.getElementById('profileForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Profile saved successfully!');
+});
+</script>
+
+</body>
+</html>

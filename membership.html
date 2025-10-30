@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership - ElevateFit</title>
+<style>
+:root{
+  --page-bg:#111827;
+  --card-bg:#343a40;
+  --button-bg:#ff6b6b;
+  --button-hover:#e74c3c;
+  --text:#fff;
+  --muted:#d1d5db;
+}
+
+body{
+  margin:0; font-family:'Helvetica Neue',Arial,sans-serif;
+  background:var(--page-bg);
+  color:var(--text);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  align-items:center;
+  padding:2rem;
+}
+
+header{
+  width:100%;
+  max-width:800px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:2rem;
+}
+
+header h1{font-size:1.5rem;}
+header a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+}
+header a:hover{color:var(--button-bg);}
+
+main{
+  width:100%;
+  max-width:800px;
+  display:grid;
+  gap:1.5rem;
+}
+
+.card{
+  background:var(--card-bg);
+  padding:2rem;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 8px 20px rgba(0,0,0,0.5);
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 30px rgba(0,0,0,0.6);
+}
+.card h2{margin-bottom:0.5rem;}
+.card p{color:var(--muted);margin-bottom:1rem;}
+
+button{
+  background:var(--button-bg);
+  color:#fff;
+  border:none;
+  padding:0.65rem 1rem;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
+  transition:background 0.3s, transform 0.2s;
+}
+button:hover{background:var(--button-hover); transform:scale(1.05);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Membership Plans</h1>
+  <a href="customer.html">Back</a>
+</header>
+
+<main>
+  <div class="card">
+    <h2>Basic Plan</h2>
+    <p>Access to gym equipment and group classes.</p>
+    <p>Duration: 1 Month | Price: ₹999</p>
+    <button onclick="subscribe('Basic')">Subscribe</button>
+  </div>
+
+  <div class="card">
+    <h2>Standard Plan</h2>
+    <p>Includes Basic + Personal Trainer 2 sessions/week.</p>
+    <p>Duration: 3 Months | Price: ₹2699</p>
+    <button onclick="subscribe('Standard')">Subscribe</button>
+  </div>
+
+  <div class="card">
+    <h2>Premium Plan</h2>
+    <p>All features + Unlimited PT + Nutrition guidance.</p>
+    <p>Duration: 6 Months | Price: ₹4999</p>
+    <button onclick="subscribe('Premium')">Subscribe</button>
+  </div>
+</main>
+
+<script>
+function subscribe(plan){
+  alert(`You have subscribed to ${plan} Plan!`);
+}
+</script>
+
+</body>
+</html>

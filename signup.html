@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sign Up - ElevateFit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <main class="signup-page">
+        <section class="signup-card">
+            <h1>Create Your ElevateFit Account</h1>
+
+            <form id="userForm" class="signup-form" aria-hidden="false">
+                <label>
+                    Full name
+                    <input name="name" type="text" required />
+                </label>
+                <label>
+                    Email
+                    <input name="email" type="email" required />
+                </label>
+                <label>
+                    Password
+                    <input name="password" type="password" minlength="6" required />
+                </label>
+                <label>
+                    Confirm Password
+                    <input name="confirm" type="password" minlength="6" required />
+                </label>
+                <div class="form-actions">
+                    <button type="submit" class="cta-button">Create Account</button>
+                   
+                </div>
+            </form>
+
+            <p class="login-prompt" style="text-align:center;margin-top:1rem;color:#fff;">
+                Already have an account?
+                <a href="login.html" class="link" style="margin-left:0.4rem;">Log in</a>
+            </p>
+        </section>
+    </main>
+
+    <script>
+        // basic submit handler (replace with real submission)
+        const userForm = document.getElementById('userForm');
+
+        userForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = Object.fromEntries(new FormData(userForm));
+            if (data.password !== data.confirm) {
+                alert('Passwords do not match.');
+                return;
+            }
+            console.log('User signup data:', data);
+            window.location.href='customer.html'; // redirect to customer dashboard
+            userForm.reset();
+        });
+    </script>
+</body>
+</html>

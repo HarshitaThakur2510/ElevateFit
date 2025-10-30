@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics - ElevateFit Admin</title>
+<style>
+:root {
+  --page-bg:#111827;
+  --card-bg:#343a40;
+  --button-bg:#ff6b6b;
+  --button-hover:#e74c3c;
+  --text:#ffffff;
+  --muted:#d1d5db;
+}
+*{box-sizing:border-box;font-family:'Helvetica Neue',Arial,sans-serif;margin:0;padding:0}
+body{background:var(--page-bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
+.container{background:var(--card-bg);padding:2rem;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);width:100%;max-width:700px}
+h1{text-align:center;margin-bottom:1rem}
+canvas{width:100%!important;height:300px!important}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Member Growth Analytics</h1>
+  <canvas id="growthChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx=document.getElementById('growthChart');
+new Chart(ctx,{type:'line',data:{
+  labels:['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+  datasets:[{label:'New Members',data:[10,20,35,25,40,55,70],borderColor:'#ff6b6b',fill:false,tension:0.3}]
+},
+options:{scales:{y:{beginAtZero:true}}}});
+</script>
+</body>
+</html>
